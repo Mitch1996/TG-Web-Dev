@@ -1,0 +1,104 @@
+.opdracht2 h1 {
+    position: relative;
+    left: 50px;
+    top: 50px;
+    color: red;
+}
+
+.opdracht3 h1 {
+    position: relative;
+    left: 20px;
+    bottom: 30px;
+    color: red;
+}
+
+.opdracht4 h1 {
+    position: relative;
+    left: 20px;
+    top: 100px;
+    color: red;
+}
+
+.container {
+    position: relative;
+    color: white;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+}
+
+.container img {
+    max-width: 400px;
+}
+
+.container2 {
+    max-width: 100px;
+    max-height: 100px;
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    padding: 10px;
+    background-color: green;
+}
+
+.inner {
+    position: relative;
+    top: 10%;
+    left: 10%;
+    height: 80%;
+    width: 80%;
+    background-color: yellow;
+}
+
+
+.container3 {
+    position: relative;
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.container3 img{
+    width: 400px;
+}
+
+.text-block {
+    position: absolute;
+    bottom: 150px;
+    color: white;
+    left: 200px;
+}
+
+
+.container4 {
+    position: relative;
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.container4 img{
+    width: 400px;
+}
+
+.text-block2 {
+    position: absolute;
+    bottom: 80px;
+    color: white;
+    left: 10px;
+}
+
+.text-block2 h1 {
+    background-color: yellow;
+    color: black;
+    width: 420px;
+}
+
+.text-block2 p {
+    background-color: white;
+    color: black;
+}
+
+

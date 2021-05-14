@@ -1,0 +1,126 @@
+.t-container p {
+    color: red;
+    transition: color 2s ease-out;
+}
+
+.t-container p:hover {
+    color: green;
+    cursor: pointer;
+}
+
+.t2-container {
+    margin: 100px;
+}
+
+.circle, .circle5, .circle4, .circle3, .circle2, .circle1, .circle0 {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    margin: 10px;
+}
+
+.t2-container:hover .circle,
+.t2-container:hover .circle5,
+.t2-container:hover .circle4,
+.t2-container:hover .circle3,
+.t2-container:hover .circle2,
+.t2-container:hover .circle1,
+.t2-container:hover .circle0 {
+    transform: translateX(200px);
+}
+
+.circle0 {
+    background: PaleTurquoise;
+    transition: all 1.5s linear;
+}
+
+.circle1 {
+    background: salmon;
+    transition: all 1.5s ease;
+}
+
+.circle2 {
+    background: lightskyblue;
+    transition: all 1.5s ease-in;
+}
+
+.circle3 {
+
+    background: khaki;
+    transition: all 1.5s ease-out;
+}
+
+.circle4 {
+    background: mediumturquoise;
+    transition: all 1.5s ease-in-out;
+}
+
+.circle5 {
+    background: thistle;
+    transition: all 1.5s cubic-bezier(0, 1, 0.98, 0);
+}
+
+
+.t3-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #333;
+    font-family: 'Lato', sans-serif;
+}
+
+.box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 150px;
+    height: 500px;
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 1s;
+}
+
+.t3-container:hover .square {
+
+}
+.t3-container:hover .square2 {
+    opacity: 1;
+    transform: translateX(-100px);
+}
+.t3-container:hover .square1 {
+    transform: translateX(-500px);
+}
+
+.square, .square2, .square1{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+}
+
+.square {
+    border-style: solid ;
+    text-align: center;
+    line-height: 50px;
+    opacity: 1;
+    transform: translate(0, 100px);
+    transition: opacity 0.5s 2s, transform 0.5s 0.5s;
+}
+
+.square1 {
+    border-style: solid ;
+    text-align: center;
+    line-height: 50px;
+    transform: translate(0, 100px);
+    transition: opacity 0.5s 2s, transform 0.5s 0.5s;
+}
+
+
+.square2 {
+    border-style: solid ;
+    text-align: center;
+    line-height: 50px;
+    transition: all 1.5s ease-in-out;
+}

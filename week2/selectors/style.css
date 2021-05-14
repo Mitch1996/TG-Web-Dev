@@ -1,0 +1,22 @@
+.opdracht4 p {
+    color: darkblue;
+}
+
+.opdracht4  {
+    color: green;
+}
+
+.opdracht5 p:nth-of-type(1) {
+    color: green;
+}
+
+.opdracht6 p:nth-of-type(1) {
+    color: green;
+}
+.opdracht6 > p {
+    color: green;
+}
+
+.opdracht6v2 * {
+   color: green;
+}
