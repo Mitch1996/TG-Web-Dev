@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Club Archery",
+    "type": "archery",
+    "membership": 15,
+    "contactInfo": {
+      "adres": "74 Sports Avenue",
+      "telephoneNumber": "066785674",
+      "contactPerson": "Jennifer"
+    }
+  },
+  {
+    "name": "Club Archery",
+    "type": "archery",
+    "membership": 15,
+    "contactInfo": {
+      "adres": "75 Sports Avenue",
+      "telephoneNumber": "066785674",
+      "contactPerson": "Jennifer"
+    }
+  },
+  {
+    "name": "Club Archery",
+    "type": "archery",
+    "membership": 15,
+    "contactInfo": {
+      "adres": "76 Sports Avenue",
+      "telephoneNumber": "066785674",
+      "contactPerson": "Jennifer"
+    }
+  }
+]
