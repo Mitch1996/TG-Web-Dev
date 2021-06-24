@@ -1,0 +1,87 @@
+body {
+    background-color: grey  ;
+    color: #ffffff;
+}
+
+h1 {
+    font-size: 48px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 200;
+    text-align: center;
+    line-height: 59px;
+    padding: 0 64px;
+    margin: 0;
+}
+
+.text {
+    position: absolute;
+    top: 8%;
+}
+
+.stopwatch {
+    display: grid;
+    justify-items: center;
+    grid-row-gap: 23px;
+    width: 100%;
+    padding-top: 25px;
+}
+
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    height: 500px;
+    width: 500px;
+    border: 2px solid;
+    border-radius: 50%;
+    box-shadow: 0 0 7px 20px #ccc;
+}
+
+
+.handler {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 37%;
+}
+
+#start {
+    background-color: lime;
+    height: 70px;
+    width: 70px;
+    border: 3px solid lightgray;
+    border-radius: 50%;
+}
+
+#stop {
+    background-color: red;
+    height: 70px;
+    width: 70px;
+    border: 3px solid lightgray;
+    border-radius: 50%;
+}
+
+#pause {
+    background-color: orange;
+    height: 70px;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 70px;
+    border: 3px solid lightgray;
+    border-radius: 50%;
+}
+
+.time {
+    font-family: "Roboto Mono", monospace;
+    font-size: 80px;
+}
+
+button {
+    cursor: pointer;
+    background: transparent;
+    padding: 0;
+    border: none;
+    margin: 0;
+    outline: none;
+}
