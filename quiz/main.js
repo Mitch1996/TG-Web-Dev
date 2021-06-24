@@ -1,6 +1,7 @@
 let container = document.getElementById("container")
 
 let index = 0
+let points = 0
 
 let div = document.createElement('div');
 let next = document.createElement('div');
@@ -25,18 +26,20 @@ function sum(param) {
 }
 
 let arr = []
+let arr2 = []
 
-function startup() {
+function render() {
    let vragen = vraag()
    let sums = sum(vragen)
    arr.push(sums)
+   arr2.push(vragen)
    switch (index++) {
       case 1: {
          index = 1
          creatediv(
             'new-rect',
             "Math problem 1",
-            vragen,
+            arr2[index],
             "question1",
             "ball",
             "1",
@@ -45,8 +48,10 @@ function startup() {
             "ball2",
             "2",
             "awnser1",
-            sums,
-            index + " " + "/ 7");
+            arr[index],
+            index + " " + "/ 7",
+            "scorehandler",
+            points + " " + "/ 7");
          break;
       }
       case 2:
@@ -54,7 +59,7 @@ function startup() {
          creatediv(
             'new-rect',
             "Math problem 2",
-            vragen,
+            arr2[index],
             "question1",
             "ball",
             "1",
@@ -63,15 +68,17 @@ function startup() {
             "ball2",
             "2",
             "awnser1",
-            sums,
-            index + " " + "/ 7");
+            arr[index],
+            index + " " + "/ 7",
+            "scorehandler",
+            points + " " + "/ 7");
          break;
       case 3: {
          index = 3
          creatediv(
             'new-rect',
             "Math problem 3",
-            vragen,
+            arr2[index],
             "question1",
             "ball",
             "1",
@@ -80,8 +87,10 @@ function startup() {
             "ball2",
             "2",
             "awnser1",
-            sums,
-            index + " " + "/ 7");
+            arr[index],
+            index + " " + "/ 7",
+            "scorehandler",
+            points + " " + "/ 7");
          break;
       }
       case 4: {
@@ -89,7 +98,7 @@ function startup() {
          creatediv(
             'new-rect',
             "Math problem 4",
-            vragen,
+            arr2[index],
             "question1",
             "ball",
             "1",
@@ -98,18 +107,82 @@ function startup() {
             "ball2",
             "2",
             "awnser1",
-            sums,
-            index + " " + "/ 7");
+            arr[index],
+            index + " " + "/ 7",
+            "scorehandler",
+            points + " " + "/ 7");
+         break;
+      }
+      case 5: {
+         index = 5
+         creatediv(
+            'new-rect',
+            "Math problem 4",
+            arr2[index],
+            "question1",
+            "ball",
+            "1",
+            "awnser1",
+            randomizer(1, 100),
+            "ball2",
+            "2",
+            "awnser1",
+            arr[index],
+            index + " " + "/ 7",
+            "scorehandler",
+            points + " " + "/ 7");
+         break;
+      }
+      case 6: {
+         index = 6
+         creatediv(
+            'new-rect',
+            "Math problem 4",
+            arr2[index],
+            "question1",
+            "ball",
+            "1",
+            "awnser1",
+            randomizer(1, 100),
+            "ball2",
+            "2",
+            "awnser1",
+            arr[index],
+            index + " " + "/ 7",
+            "scorehandler",
+            points + " " + "/ 7");
+         break;
+      }
+      case 7: {
+         index = 7
+         creatediv(
+            'new-rect',
+            "Math problem 4",
+            arr2[index],
+            "question1",
+            "ball",
+            "1",
+            "awnser1",
+            randomizer(1, 100),
+            "ball2",
+            "2",
+            "awnser1",
+            arr[index],
+            index + " " + "/ 7",
+         "scorehandler",
+         points + " " + "/ 7"
+         )
          break;
       }
    }
 }
 
-   startbtn.onclick = startup
+   startbtn.onclick = render
 
-   function creatediv(main, problem, test, question, ball, inner, answer1, btn1, ball2, inner2, answer2, btn2, progress) {
+   function creatediv(main, problem, test, question, ball, inner, answer1, btn1, ball2, inner2, answer2, btn2, progress, scorec, score) {
       div.id = main
       div.appendChild(document.createTextNode(progress))
+      scoreHandler(scorec, score)
       h1Handler(problem)
       questionHandler(question, test)
       ballHandler(ball, inner)
@@ -135,20 +208,18 @@ function answerHandler(param, inner) {
    answer.onclick = function () {
       if(arr[index] == answer.innerHTML) {
          answer.style.background = "green"
+         points++
          setTimeout(() => {
             index++
             div.innerHTML = ""
-            startup() }, 1000);
+            render() }, 1000);
       } else {
          answer.style.background = "red"
          setTimeout(() => {
-            if(index === 1) {
-               return
-            }
             answer.style.background = "white"
-            index--
+            index++
             div.innerHTML = ""
-            startup()
+            render()
          }, 1000);
       }
    }
@@ -169,6 +240,13 @@ function answerHandler(param, inner) {
       each.innerHTML = ball
    }
 
+   function scoreHandler(param, param2) {
+      let scoren = document.createElement("P")
+      div.appendChild(scoren)
+      scoren.className = param
+      scoren.innerHTML = param2
+   }
+
 
    function buttonHandler() {
       let previous = document.createElement("button")
@@ -178,10 +256,11 @@ function answerHandler(param, inner) {
       previous.onclick = function () {
          index--
          if (index < 1) {
-            index = 4
+            alert("Je kan niet terug vanaf het begin punt")
+            return
          }
          div.innerHTML = ""
-         startup()
+         render()
       }
       let nextstep = document.createElement("button")
       next.appendChild(nextstep)
@@ -189,11 +268,11 @@ function answerHandler(param, inner) {
       nextstep.innerText = "Volgende"
       nextstep.onclick = function () {
          index++
-         if (index > 4) {
+         if (index > 7) {
             index = 1
          }
          div.innerHTML = ""
-         startup()
+         render()
       }
       container.appendChild(next)
 }
