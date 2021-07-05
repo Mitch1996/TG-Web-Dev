@@ -275,15 +275,28 @@ index.js:273 65
 
 // }
 
-let fibo = [0, 1]
-let sum = 1
-for (let i = 2; i <= 100; i++) {
-    fibo[i] = fibo[i - 2] + fibo[i - 1];
-    if (fibo[i] % 2 != 0) {
-        sum += fibo[i]
-        if (sum < 4000000) {
-            y = sum
-        }
-    }
+// let fibo = [0, 1]
+// let sum = 1
+// for (let i = 2; i <= 100; i++) {
+//     fibo[i] = fibo[i - 2] + fibo[i - 1];
+//     if (fibo[i] % 2 != 0) {
+//         sum += fibo[i]
+//         if (sum < 4000000) {
+//             y = sum
+//         }
+//     }
+// }
+// console.log(y)
+
+
+function dateHandler(datum1, datum2) {
+    let date1 = new Date(datum1)
+    let date2 = new Date(datum2)
+    let tijd = date2.getTime() - date1.getTime()
+    let dag = tijd / (1000 * 3600 * 24);
+    let round = Math.ceil(dag)
+    return round
 }
-console.log(y)
+
+
+console.log(dateHandler("06/29/2021", "07/03/2021"))

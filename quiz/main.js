@@ -43,11 +43,11 @@ function render() {
             "question1",
             "ball",
             "1",
-            "awnser1",
+            "answer1",
             randomizer(1, 100),
             "ball2",
             "2",
-            "awnser1",
+            "correctAnswer",
             arr[index],
             index + " " + "/ 7",
             "scorehandler",
@@ -63,11 +63,11 @@ function render() {
             "question1",
             "ball",
             "1",
-            "awnser1",
+            "answer1",
             randomizer(1, 100),
             "ball2",
             "2",
-            "awnser1",
+            "correctAnswer",
             arr[index],
             index + " " + "/ 7",
             "scorehandler",
@@ -82,11 +82,11 @@ function render() {
             "question1",
             "ball",
             "1",
-            "awnser1",
+            "answer",
             randomizer(1, 100),
             "ball2",
             "2",
-            "awnser1",
+            "correctAnswer",
             arr[index],
             index + " " + "/ 7",
             "scorehandler",
@@ -102,11 +102,11 @@ function render() {
             "question1",
             "ball",
             "1",
-            "awnser1",
+            "answer",
             randomizer(1, 100),
             "ball2",
             "2",
-            "awnser1",
+            "correctAnswer",
             arr[index],
             index + " " + "/ 7",
             "scorehandler",
@@ -122,11 +122,11 @@ function render() {
             "question1",
             "ball",
             "1",
-            "awnser1",
+            "answer",
             randomizer(1, 100),
             "ball2",
             "2",
-            "awnser1",
+            "correctAnswer",
             arr[index],
             index + " " + "/ 7",
             "scorehandler",
@@ -142,11 +142,11 @@ function render() {
             "question1",
             "ball",
             "1",
-            "awnser1",
+            "answer",
             randomizer(1, 100),
             "ball2",
             "2",
-            "awnser1",
+            "correctAnswer",
             arr[index],
             index + " " + "/ 7",
             "scorehandler",
@@ -162,11 +162,11 @@ function render() {
             "question1",
             "ball",
             "1",
-            "awnser1",
+            "answer",
             randomizer(1, 100),
             "ball2",
             "2",
-            "awnser1",
+            "answer",
             arr[index],
             index + " " + "/ 7",
          "scorehandler",
@@ -199,28 +199,18 @@ function render() {
    }
 
 
+
 function answerHandler(param, inner) {
    let answer = document.createElement("button")
    div.appendChild(answer)
-   answer.className = param
+   answer.id = param
    answer.innerText = inner
-   answer.style.pointerEvents = "auto"
    answer.onclick = function () {
-      if(arr[index] == answer.innerHTML) {
+      if(arr[index] === Number(answer.innerHTML)) {
          answer.style.background = "green"
          points++
-         setTimeout(() => {
-            index++
-            div.innerHTML = ""
-            render() }, 1000);
       } else {
          answer.style.background = "red"
-         setTimeout(() => {
-            answer.style.background = "white"
-            index++
-            div.innerHTML = ""
-            render()
-         }, 1000);
       }
    }
    answer.className = "answerButton"
@@ -254,13 +244,15 @@ function answerHandler(param, inner) {
       previous.id = "nextbutton"
       previous.innerText = "Vorige"
       previous.onclick = function () {
-         index--
-         if (index < 1) {
-            alert("Je kan niet terug vanaf het begin punt")
+         if(index === 1) {
             return
          }
+         index--
          div.innerHTML = ""
          render()
+         if(arr[index]) {
+            document.getElementById("correctAnswer").style.background = "green"
+         }
       }
       let nextstep = document.createElement("button")
       next.appendChild(nextstep)
@@ -276,4 +268,5 @@ function answerHandler(param, inner) {
       }
       container.appendChild(next)
 }
+
 

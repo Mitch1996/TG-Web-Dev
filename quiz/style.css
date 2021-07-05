@@ -84,15 +84,9 @@ p {
     color: black;
     cursor: pointer;
 }
-.answerButton {
-    width: 500px;
-    height: 100px;
-    background-color: rgb(255, 255, 255);
-    margin-top: 30px;
-    color: black;
-    cursor: pointer;
-}
-.awnser3 {
+
+
+.answer4 {
     width: 500px;
     height: 100px;
     background-color: rgb(255, 255, 255);
@@ -101,16 +95,7 @@ p {
     color: black;
     cursor: pointer;
 }
-.awnser4 {
-    width: 500px;
-    height: 100px;
-    background-color: rgb(255, 255, 255);
-    margin-left: 100px;
-    margin-top: 30px;
-    color: black;
-    cursor: pointer;
-}
-.awnser5 {
+.answer5 {
     width: 500px;
     height: 100px;
     background-color: rgb(255, 255, 255);
