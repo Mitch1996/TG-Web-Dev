@@ -13,7 +13,8 @@ import java.util.List;
 
 public class Main {
 
-    static ArrayList<String> list = new ArrayList<>();
+    static ArrayList<String> Tellist = new ArrayList<>();
+    static ArrayList<String> KledingList = new ArrayList<>();
 
     private static void connection() {
         BsonArray quantityArray = new BsonArray();
@@ -24,9 +25,12 @@ public class Main {
         MongoClient mongoClient = MongoClients.create(settings);
         MongoDatabase database = mongoClient.getDatabase("webshop");
         MongoCollection<Document> collection = database.getCollection("webshop_data");
-        list.add("iphone");
-        Document doc = new Document().append("telefoons", list);
-        collection.insertOne(doc);
+        Tellist.add("iphone");
+        KledingList.add("Gucci");
+        Document teldoc = new Document().append("telefoons", Tellist);
+        Document kledingdoc = new Document().append("kleding", KledingList);
+        collection.insertOne(kledingdoc);
+        collection.insertOne(teldoc);
     }
 
     public static void main(String[] args) {
