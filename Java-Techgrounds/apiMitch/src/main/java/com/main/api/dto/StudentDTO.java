@@ -1,24 +1,22 @@
-package com.main.api;
+package com.main.api.dto;
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+public class StudentDTO {
 
-import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.Date;
-
-public class Student {
-
+    private String id;
     private String firstName;
     private String password;
     private String lastName;
     private String email;
     private String ervaring;
     private Integer sterren;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -67,5 +65,4 @@ public class Student {
     public void setPassword(String password) {
         this.password = password;
     }
-
 }

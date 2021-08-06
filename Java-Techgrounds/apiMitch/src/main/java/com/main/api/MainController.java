@@ -1,7 +1,10 @@
 package com.main.api;
 
+import com.main.api.dto.StudentDTO;
+import com.main.api.service.StudentServiceApi;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,62 +16,43 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/api/v1")
+@CrossOrigin("*")
 public class MainController{
 
-    private String msg = "";
-
     @Autowired
-    private UserRepository userRepository;
+    private StudentServiceApi studentServiceApi;
 
-    @GetMapping("/users")
-    public List<Student> getAllUsers() {
-        return userRepository.findAll();
+    @GetMapping(value = "/all")
+    public List<StudentDTO> getAll() throws Exception {
+        return studentServiceApi.getAll();
     }
 
-    @GetMapping("/users/{id}")
-    public ResponseEntity<Student> getUsersById(@PathVariable(value = "id") Long userId)
-            throws ResourceNotFoundException {
-        Student user = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User not found on :: " + userId));
-        return ResponseEntity.ok().body(user);
-    }
-    @PostMapping("/users")
-    public ResponseEntity<String> createUser(@RequestBody Student user) {
-        user.setCreated(LocalDate.now());
-        userRepository.save(user);
-        return ResponseEntity.ok("Added user :" + user.getFirstName());
+    @GetMapping(value = "/find/{id}")
+    public StudentDTO find(@PathVariable String id) throws Exception {
+        return studentServiceApi.get(id);
     }
 
-    @PutMapping("/users/{id}")
-    public ResponseEntity<Student> updateUser(
-            @PathVariable(value = "id") Long userId, @Valid @RequestBody Student userDetails)
-            throws ResourceNotFoundException {
-
-        Student user =
-                userRepository
-                        .findById(userId)
-                        .orElseThrow(() -> new ResourceNotFoundException("User not found on :: " + userId));
-        user.setEmail(userDetails.getEmail());
-        user.setLastName(userDetails.getLastName());
-        user.setFirstName(userDetails.getFirstName());
-        user.setErvaring(userDetails.getErvaring());
-        user.setSterren(userDetails.getSterren());
-        System.out.println(LocalDate.now());
-        final Student updatedUser = userRepository.save(user);
-        return ResponseEntity.ok(updatedUser);
+    @PostMapping(value = "/save/{id}")
+    public ResponseEntity<String> save(@RequestBody Student student, @PathVariable String id) throws Exception {
+        if (id == null || id.length() == 0 || id.equals("null")) {
+            id = studentServiceApi.save(student);
+        } else {
+            studentServiceApi.save(student, id);
+        }
+        return new ResponseEntity<String>(id, HttpStatus.OK);
     }
 
-    @DeleteMapping("/users/{id}")
-    public Map<String, Boolean> deleteUser(@PathVariable(value = "id") Long userId) throws Exception {
-        Student user =
-                userRepository
-                        .findById(userId)
-                        .orElseThrow(() -> new ResourceNotFoundException("User not found on :: " + userId));
 
-        userRepository.delete(user);
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("deleted", Boolean.TRUE);
-        return response;
+    @GetMapping(value = "/delete/{id}")
+    public ResponseEntity<StudentDTO> delete(@PathVariable String id) throws Exception {
+        StudentDTO studentDTO = studentServiceApi.get(id);
+        if (studentDTO != null) {
+            studentServiceApi.delete(id);
+        } else {
+            return new ResponseEntity<StudentDTO>(HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity<StudentDTO>(studentDTO, HttpStatus.OK);
     }
 }
